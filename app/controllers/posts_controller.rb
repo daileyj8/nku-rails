@@ -19,7 +19,7 @@ end
 end
 
 def index
-  @posts = Post.all
+  @post = Post.all
 end
 
 def edit
