@@ -1,0 +1,28 @@
+<h1>Listing Students</h1>
+<%= link_to 'New Student', new_student_path %>
+<% require 'digest/md5' %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Nickname</th>
+    <th>Email</th>
+    <th>Image</th>
+  </tr>
+ 
+  <% @students.each do |student| %>
+    <% email_address= (student.email).downcase %>
+    
+    <tr>
+      <td><%= student.name %></td>
+      <td><%= student.nickname %></td>
+      <td><%= student.email %></td>
+      <td><%if student.image == ""%>
+             <% hash = Digest::MD5.hexdigest(email_address) %>
+             <img src=<%= "http://www.gravatar.com/avatar/#{hash}" %>
+          <% else %>
+             <img src=<%= student.image %> alt="image" height=100 width=100>
+          <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
