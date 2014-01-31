@@ -1,10 +1,15 @@
 <% flash.each do |name, msg| -%>
       <%= content_tag :div, msg, class: name %>
 <% end -%>
-<h1>Listing Students</h1>
-<%= link_to 'New Student', new_student_path %>
+
+<h1>List of Students</h1>
+
+<g>
+  <%= link_to 'New Student', new_student_path %>
+</g>
+
 <% require 'digest/md5' %>
-<table>
+<table rules="rows">
   <tr>
     <th>Name</th>
     <th>Nickname</th>

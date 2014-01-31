@@ -39,7 +39,7 @@ class StudentsController < ApplicationController
   def destroy
     @student = Student.find(params[:id])
     @student.destroy
-    redirect_to students_path
+    redirect_to students_path, notice: "Student successfully deleted."
   end
   
   private
