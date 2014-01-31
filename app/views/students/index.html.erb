@@ -1,3 +1,6 @@
+<% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+<% end -%>
 <h1>Listing Students</h1>
 <%= link_to 'New Student', new_student_path %>
 <% require 'digest/md5' %>
@@ -23,6 +26,9 @@
              <img src=<%= student.image %> alt="image" height=100 width=100>
           <% end %>
       </td>
+      <td><%= link_to 'Show', student %></td>
+      <td><%= link_to 'Edit Profile', edit_student_path(student) %></td>
+      
     </tr>
   <% end %>
 </table>
