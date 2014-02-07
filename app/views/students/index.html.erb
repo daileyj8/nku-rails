@@ -4,9 +4,11 @@
 
 <h1>List of Students</h1>
 
-
+<p>
+  <%= Student.find(session[:student_id]) %>
+</p>
   <p>
-    <%= link_to 'New Student', new_student_path %>
+  <%= link_to 'Log out', session_path(:student_id), method: :delete, data: { confirm: 'Are you sure?' } %>
   </p>
 
 

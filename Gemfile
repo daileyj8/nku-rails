@@ -11,6 +11,8 @@ gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
+gem 'bcrypt-ruby', '~> 3.1.2'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 

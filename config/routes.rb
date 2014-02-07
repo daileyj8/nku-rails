@@ -7,7 +7,7 @@ NkuRails::Application.routes.draw do
     resources :comments
   end
   resources :posts
-  
+  resources :sessions
   resources :students
   # You can have the root of your site routed with "root"
   root to: "welcome#index"

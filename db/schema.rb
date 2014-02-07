@@ -13,15 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140129225750) do
 
-  create_table "buellers", force: true do |t|
-    t.string   "name"
-    t.string   "nickname"
-    t.string   "email"
-    t.string   "image"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "comments", force: true do |t|
     t.string   "commenter"
     t.text     "body"
@@ -44,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140129225750) do
     t.string   "nickname"
     t.string   "email"
     t.string   "image"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
