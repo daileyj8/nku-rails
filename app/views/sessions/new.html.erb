@@ -1,0 +1,13 @@
+<% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+<% end -%>
+<h1>Log In</h1>
+
+<%= form_tag sessions_path do %>
+  <%= label_tag :email %>
+  <%= text_field_tag :email, params[:email] %>
+  <%= label_tag :password %>
+  <%= password_field_tag :password %>
+  <%= submit_tag "Log In" %>
+<% end %>
+<%= link_to 'New Student', new_student_path %>
