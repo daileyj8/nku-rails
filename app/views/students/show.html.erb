@@ -14,12 +14,7 @@
   <strong>Image:</strong>
   <%= @student.image %>
 </p>
-<p>
-  <%= link_to 'Edit Information', edit_student_path(@student) %>
-</p>
-<p>
-  <%= link_to 'Delete Profile', student_path(@student), method: :delete, data: { confirm: 'Are you sure?' } %>
-</p>
+
 <p>
   <%= link_to 'List of Students', students_path %>
 </p>

@@ -4,12 +4,10 @@
 
 <h1>List of Students</h1>
 
+
 <p>
-  <%= Student.find(session[:student_id]) %>
-</p>
-  <p>
   <%= link_to 'Log out', session_path(:student_id), method: :delete, data: { confirm: 'Are you sure?' } %>
-  </p>
+</p>
 
 
 <% require 'digest/md5' %>
@@ -39,9 +37,10 @@
         <% end %>
       </td>
       
-      <td><%= link_to 'Show', student %></td>
-      <td><%= link_to 'Edit Profile', edit_student_path(student) %></td>
-      
+      <% if session[:student_id] == student.id %>
+        <td><%= link_to 'Show', student %></td>
+        <td><%= link_to 'Edit Profile', edit_student_path(student) %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>

@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
-  before_filter :login_required, :only => [:edit, :update, :show, :index]
+ 
+  
   def new
     @student = Student.new
   end
@@ -24,6 +25,11 @@ class StudentsController < ApplicationController
   
   def show
     @student = Student.find(params[:id])
+    unless session[:student_id] == @student.id
+      flash[:notice] = "You dont have access to that profile!"
+      redirect_to students_path
+      return
+    end
   end
   
   def index
@@ -32,11 +38,16 @@ class StudentsController < ApplicationController
   
   def edit
     @student = Student.find(params[:id])
+     unless session[:student_id] == @student.id
+      flash[:notice] = "You dont have access to that profile!"
+      redirect_to students_path
+      return
+    end
   end
   
   def update
     @student = Student.find(params[:id])
-    if @student.update(params[:student].permit(:name, :nickname, :email, :image, :password, :password_confirmation))
+    if @student.update(params[:student].permit(:name, :nickname, :email, :image))
       redirect_to students_path, notice: "Student successfully updated."
     else
       render 'edit'
@@ -46,11 +57,9 @@ class StudentsController < ApplicationController
   def destroy
     @student = Student.find(params[:id])
     @student.destroy
-    redirect_to students_path, notice: "Student successfully deleted."
+    redirect_to new_session_path, notice: "Student successfully deleted."
   end
-  def current_user
-    @current_user ||= Student.find(session[:student_id]) if session[:user_id]
-  end
+  
   private
   def student_params
     params.require(:student).permit(:name, :nickname, :email, :image)

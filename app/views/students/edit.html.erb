@@ -1,9 +1,10 @@
-<h1>Editing Student</h1>
+
+  <h1>Editing Student</h1>
  
-<%= render 'form' %>
-<p>
-  <%= link_to 'Delete Profile', student_path(@student), method: :delete, data: { confirm: 'Are you sure?' } %>
-</p>
-<p>
-  <%= link_to 'Back', students_path %>
-</p>
+  <%= render 'form' %>
+  <p>
+    <%= link_to 'Delete Profile', student_path(@student), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
+  <p>
+    <%= link_to 'Back', students_path %>
+  </p>

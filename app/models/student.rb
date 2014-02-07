@@ -5,7 +5,7 @@ class Student < ActiveRecord::Base
   has_secure_password
   validates_presence_of :password, :on => :create
   validates :name, presence: true, length: { minimum: 2 }
-  validates :password, length: { minimum: 4 }
+  
   
 #  def grav_url
 #    if student.image != ""
