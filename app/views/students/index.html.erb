@@ -36,9 +36,8 @@
           <img src=<%="http://premium.wpmudev.org/blog/wp-content/uploads/2012/04/mystery-man-small.jpg" %> height=100 width=100>
         <% end %>
       </td>
-      
+      <td><%= link_to 'Show', student %></td>
       <% if session[:student_id] == student.id %>
-        <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit Profile', edit_student_path(student) %></td>
       <% end %>
     </tr>

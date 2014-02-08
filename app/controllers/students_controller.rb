@@ -16,6 +16,7 @@ class StudentsController < ApplicationController
     @student = Student.new(params[:student].permit(:name, :nickname, :email, :image, :password, :password_confirmation))
     
     if @student.save
+      session[:student_id] = @student.id
       redirect_to students_path, notice: "Student successfully created."
       
     else
@@ -25,11 +26,7 @@ class StudentsController < ApplicationController
   
   def show
     @student = Student.find(params[:id])
-    unless session[:student_id] == @student.id
-      flash[:notice] = "You dont have access to that profile!"
-      redirect_to students_path
-      return
-    end
+    
   end
   
   def index
@@ -56,6 +53,7 @@ class StudentsController < ApplicationController
   
   def destroy
     @student = Student.find(params[:id])
+    session.destroy
     @student.destroy
     redirect_to new_session_path, notice: "Student successfully deleted."
   end

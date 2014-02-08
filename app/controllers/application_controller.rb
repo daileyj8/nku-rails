@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery 
 
-  before_filter :authenticate_student, :only => [:edit, :update, :show, :index]
+  before_filter :authenticate_student, :only => [:edit, :update]
   
   def login_required
     unless Student.find(session[:student_id]) != nil
