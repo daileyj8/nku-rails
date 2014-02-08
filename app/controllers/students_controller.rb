@@ -13,7 +13,7 @@ class StudentsController < ApplicationController
   end
       
   def create
-    @student = Student.new(params[:student].permit(:name, :nickname, :email, :image, :password, :password_confirmation))
+    @student = Student.new(student_params)
     
     if @student.save
       session[:student_id] = @student.id
@@ -44,7 +44,7 @@ class StudentsController < ApplicationController
   
   def update
     @student = Student.find(params[:id])
-    if @student.update(params[:student].permit(:name, :nickname, :email, :image))
+    if @student.update(student_params)
       redirect_to students_path, notice: "Student successfully updated."
     else
       render 'edit'
@@ -60,7 +60,8 @@ class StudentsController < ApplicationController
   
   private
   def student_params
-    params.require(:student).permit(:name, :nickname, :email, :image)
+    params.require(:student).permit(:name, :nickname, :email, :image, :password, :password_confirmation)
   end
+  
   
 end
