@@ -8,6 +8,16 @@ class Student < ActiveRecord::Base
   validates :name, presence: true, length: { minimum: 2 }
   
   
+  validates :password,
+    :length => { :minimum => 5, :if => :validate_password? },
+    :confirmation => { :if => :validate_password? }
+
+  private
+
+  def validate_password?
+    password.present? || password_confirmation.present?
+  end
+  
 #  def grav_url
 #    if student.image != ""
 #      return student.image
