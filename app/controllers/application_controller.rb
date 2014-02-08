@@ -5,18 +5,14 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_student, :only => [:edit, :update]
   
-  def login_required
-    unless Student.find(session[:student_id]) != nil
-      flash[:alert] = 'Log In!'
-      redirect_to new_session_path
-    end
-  end
+  
   
   def authenticate_student
     if session[:student_id]
       @current_student = Student.find(session[:student_id])
       return true
     else
+      flash[:notice] = "Log in!"
       redirect_to(:controller => 'sessions', :action => 'new')
       return false
     end
