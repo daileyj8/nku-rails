@@ -4,12 +4,15 @@
 
 <h1>List of Students</h1>
 
+<% if session[:student_id] != nil %>
 <p>
   <%= link_to 'Log out', session_path(:student_id), method: :delete, data: { confirm: 'Are you sure?' } %>
-  
+</p>
+<% else %>
+<p>
   <%= link_to "Log In", new_session_path %>
 </p>
-
+<% end %>
 
 <% require 'digest/md5' %>
 <table rules="rows">
