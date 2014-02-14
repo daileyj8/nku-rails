@@ -2,14 +2,14 @@
 
 <h1>Attendances</h1>
 <% Attendance.dup %>
-<table class="studentTable">
+<h3>Seat 1</h3>
+<table>
   <tr>
     <th>Pic</th>
     <th>Student Name</th>
     <th>Attended On</th>
     <th>Seat</th>
   </tr>
-  
   <% @attendances.each do |attendance| %>
     <% if attendance.seat == 1 %>
       <% @current = Student.find(attendance.student_id) %>
@@ -35,6 +35,15 @@
       <% end %>
     <% end %>
   <% end %>
+</table>
+<h3>Seat 2</h3>
+<table>
+  <tr>
+    <th>Pic</th>
+    <th>Student Name</th>
+    <th>Attended On</th>
+    <th>Seat</th>
+  </tr>
   <% @attendances.each do |attendance| %>
     <% if attendance.seat == 2 %>
       <% @current = Student.find(attendance.student_id) %>
@@ -60,6 +69,15 @@
       <% end %>
     <% end %>
   <% end %>
+</table>
+<h3>Seat 3</h3>
+<table>
+  <tr>
+    <th>Pic</th>
+    <th>Student Name</th>
+    <th>Attended On</th>
+    <th>Seat</th>
+  </tr>
   <% @attendances.each do |attendance| %>
     <% if attendance.seat == 3 %>
       <% @current = Student.find(attendance.student_id) %>
@@ -85,6 +103,15 @@
       <% end %>
     <% end %>
   <% end %>
+</table>
+<h3>Seat 4</h3>
+<table>
+  <tr>
+    <th>Pic</th>
+    <th>Student Name</th>
+    <th>Attended On</th>
+    <th>Seat</th>
+  </tr>
   <% @attendances.each do |attendance| %>
   <% if attendance.seat == 4 %>
       <% @current = Student.find(attendance.student_id) %>
