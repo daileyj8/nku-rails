@@ -11,26 +11,103 @@
   </tr>
   
   <% @attendances.each do |attendance| %>
-    <% @current = Student.find(attendance.student_id) %>
-    <% if attendance.attended_on == Date.today %>
-    <% email_address= (@current.email).downcase %>
-    <% if @current && attendance.student_id == @current.id %>
-      <tr>
-        <td>
-        <% if @current.image != ""%>
-          <img src= <%= @current.image %> alt="image" height=100 width=100>
-        <% elsif @current.email != ""%>
-          <% hash = Digest::MD5.hexdigest(email_address) %>
-          <img src=<%= "http://www.gravatar.com/avatar/#{hash}" %>>
-        <% else %>
-          <img src=<%="http://premium.wpmudev.org/blog/wp-content/uploads/2012/04/mystery-man-small.jpg" %> height=100 width=100>
+    <% if attendance.seat == 1 %>
+      <% @current = Student.find(attendance.student_id) %>
+      <% if attendance.attended_on == Date.today %>
+        <% email_address= (@current.email).downcase %>
+        <% if @current && attendance.student_id == @current.id %>
+          <tr>
+            <td>
+            <% if @current.image != ""%>
+              <img src= <%= @current.image %> alt="image" height=100 width=100>
+            <% elsif @current.email != ""%>
+              <% hash = Digest::MD5.hexdigest(email_address) %>
+              <img src=<%= "http://www.gravatar.com/avatar/#{hash}" %>>
+            <% else %>
+              <img src=<%="http://premium.wpmudev.org/blog/wp-content/uploads/2012/04/mystery-man-small.jpg" %> height=100 width=100>
+            <% end %>
+          </td>
+          <td><%= @current.name %></td>
+          <td><%= attendance.attended_on %></td>
+          <td><%= attendance.seat %></td>
+          </tr>
         <% end %>
-      </td>
-        <td><%= @current.name %></td>
-        <td><%= attendance.attended_on %></td>
-        <td><%= attendance.seat %></td>
-      </tr>
+      <% end %>
     <% end %>
+  <% end %>
+  <% @attendances.each do |attendance| %>
+    <% if attendance.seat == 2 %>
+      <% @current = Student.find(attendance.student_id) %>
+      <% if attendance.attended_on == Date.today %>
+        <% email_address= (@current.email).downcase %>
+        <% if @current && attendance.student_id == @current.id %>
+          <tr>
+            <td>
+            <% if @current.image != ""%>
+              <img src= <%= @current.image %> alt="image" height=100 width=100>
+            <% elsif @current.email != ""%>
+              <% hash = Digest::MD5.hexdigest(email_address) %>
+              <img src=<%= "http://www.gravatar.com/avatar/#{hash}" %>>
+            <% else %>
+              <img src=<%="http://premium.wpmudev.org/blog/wp-content/uploads/2012/04/mystery-man-small.jpg" %> height=100 width=100>
+            <% end %>
+          </td>
+          <td><%= @current.name %></td>
+          <td><%= attendance.attended_on %></td>
+          <td><%= attendance.seat %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% @attendances.each do |attendance| %>
+    <% if attendance.seat == 3 %>
+      <% @current = Student.find(attendance.student_id) %>
+      <% if attendance.attended_on == Date.today %>
+        <% email_address= (@current.email).downcase %>
+        <% if @current && attendance.student_id == @current.id %>
+          <tr>
+            <td>
+            <% if @current.image != ""%>
+              <img src= <%= @current.image %> alt="image" height=100 width=100>
+            <% elsif @current.email != ""%>
+              <% hash = Digest::MD5.hexdigest(email_address) %>
+              <img src=<%= "http://www.gravatar.com/avatar/#{hash}" %>>
+            <% else %>
+              <img src=<%="http://premium.wpmudev.org/blog/wp-content/uploads/2012/04/mystery-man-small.jpg" %> height=100 width=100>
+            <% end %>
+          </td>
+          <td><%= @current.name %></td>
+          <td><%= attendance.attended_on %></td>
+          <td><%= attendance.seat %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <% @attendances.each do |attendance| %>
+  <% if attendance.seat == 4 %>
+      <% @current = Student.find(attendance.student_id) %>
+      <% if attendance.attended_on == Date.today %>
+        <% email_address= (@current.email).downcase %>
+        <% if @current && attendance.student_id == @current.id %>
+          <tr>
+            <td>
+            <% if @current.image != ""%>
+              <img src= <%= @current.image %> alt="image" height=100 width=100>
+            <% elsif @current.email != ""%>
+              <% hash = Digest::MD5.hexdigest(email_address) %>
+              <img src=<%= "http://www.gravatar.com/avatar/#{hash}" %>>
+            <% else %>
+              <img src=<%="http://premium.wpmudev.org/blog/wp-content/uploads/2012/04/mystery-man-small.jpg" %> height=100 width=100>
+            <% end %>
+          </td>
+          <td><%= @current.name %></td>
+          <td><%= attendance.attended_on %></td>
+          <td><%= attendance.seat %></td>
+          </tr>
+        <% end %>
+      <% end %>
     <% end %>
   <% end %>
 </table>
