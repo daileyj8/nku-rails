@@ -12,15 +12,15 @@ class AttendancesController < ApplicationController
     @current = get_current
     if @current == nil
       redirect_to new_session_path
-    end
-    @attendance = Attendance.new(get_params)
-    if @attendance.save
-      redirect_to attendances_path
     else
-      redirect_to new_attendance_path
+      @attendance = Attendance.new(get_params)
+      if @attendance.save
+        redirect_to attendances_path
+      else
+        redirect_to new_attendance_path
+      end
     end
   end
-
   def index
     @attendances= Attendance.all
   end
