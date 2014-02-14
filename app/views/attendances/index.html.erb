@@ -1,3 +1,7 @@
+<% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: name %>
+<% end %>
+
 <center><img src="http://www.adoptabeach.com/images/header-attendance.jpg" alt="attendance"></center>
 
 <% Attendance.dup %>

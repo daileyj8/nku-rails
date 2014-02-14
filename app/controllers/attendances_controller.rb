@@ -5,7 +5,10 @@ class AttendancesController < ApplicationController
     if @current= nil
       redirect_to new_session_path
     end
+    
     @attendance = Attendance.new
+      
+    
   end
   
   def create
@@ -15,7 +18,7 @@ class AttendancesController < ApplicationController
     else
       @attendance = Attendance.new(get_params)
       if @attendance.save
-        redirect_to attendances_path
+        redirect_to attendances_path, notice: "Attendance taken."
       else
         redirect_to new_attendance_path
       end
