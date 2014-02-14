@@ -1,10 +1,53 @@
 
-  <h1>Editing Student</h1>
+<h1>Editing Student</h1>
  
-  <%= render 'form' %>
+<%= form_for @student do |f| %>
+
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+    <h2><%= pluralize(@student.errors.count, "error") %> prohibited
+      this student from being saved:</h2>
+    <ul>
+    <% @student.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+    </div>
+  <% end %>
+
   <p>
-    <%= link_to 'Delete Profile', student_path(@student), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
   </p>
   <p>
-    <%= link_to 'Back', students_path %>
+    <%= f.label :nickname %><br>
+    <%= f.text_field :nickname %>
   </p>
+  <p>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :image %><br>
+    <%= f.text_field :image %>
+  </p>
+  
+<h1>Change Password</h1>
+  <p>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+<p>
+  <%= link_to 'Delete Profile', student_path(@student), method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
+<p>
+  <%= link_to 'Back', students_path %>
+</p>

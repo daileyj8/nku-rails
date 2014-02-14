@@ -6,7 +6,8 @@ class CreateStudents < ActiveRecord::Migration
       t.string :email
       t.string :image
       t.string :password_digest
-      
+      t.boolean :absent
+      t.integer :in_seat
       t.timestamps
     end
   end

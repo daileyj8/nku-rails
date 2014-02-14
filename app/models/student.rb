@@ -7,6 +7,13 @@ class Student < ActiveRecord::Base
   validates_presence_of :email, :on => :create
   validates :name, presence: true, length: { minimum: 2 }
   
+  has_many :attendances, dependent: :destroy
+  
+  def self.in_seat(seat, date)
+  end
+  
+  def self.absent(date)
+  end
   
   validates :password,
     :length => { :minimum => 5, :if => :validate_password? },

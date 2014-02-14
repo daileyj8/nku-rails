@@ -6,6 +6,7 @@ NkuRails::Application.routes.draw do
   resources :posts do
     resources :comments
   end
+  resources :attendances
   resources :posts
   resources :sessions
   resources :students
