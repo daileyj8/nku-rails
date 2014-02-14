@@ -17,7 +17,7 @@ class AttendancesController < ApplicationController
     if @attendance.save
       redirect_to attendances_path
     else
-      redirect_to 'new'
+      redirect_to new_attendance_path
     end
   end
 

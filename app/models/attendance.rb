@@ -7,4 +7,5 @@ class Attendance < ActiveRecord::Base
       duplicates.each{|double| double.destroy}
     end
   end
+  validates :seat, :inclusion => 1..4
 end
