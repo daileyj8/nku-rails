@@ -25,7 +25,10 @@ class AttendancesController < ApplicationController
     end
   end
   def index
+    now= Date.today
     @attendances= Attendance.all
+    @student= Student.all
+    @absent = Student.absent(now)
   end
   
   def get_current
