@@ -27,12 +27,9 @@ class AttendancesController < ApplicationController
     end
   end
   def index
-    date=Date.today
-    @in1 = Student.in_seat(1, date)
-    @in2 = Student.in_seat(2, date) 
-    @in3 = Student.in_seat(3, date) 
-    @in4 = Student.in_seat(4, date) 
-    @absentStudents= Student.absent(date) 
+    @attendance= Attendance.all
+    
+    @date=params[:date] || Date.today
   end
   
   def get_current

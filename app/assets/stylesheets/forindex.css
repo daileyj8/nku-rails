@@ -8,6 +8,9 @@ th {text-decoration:underline}
 g {float:right}
 h2 {text-align: center;}
 
+.date{ position:absolute;
+  top:0;
+  right:0;}
 
 .box{ position:relative;}
 .tl{ position:absolute;
