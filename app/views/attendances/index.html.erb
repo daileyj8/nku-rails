@@ -4,13 +4,6 @@
 
 <center><img src="http://www.adoptabeach.com/images/header-attendance.jpg" alt="attendance"></center>
 
-<% @in1 = Student.in_seat(1, Date.today) %>
-<% @in2 = Student.in_seat(2, Date.today) %>
-<% @in3 = Student.in_seat(3, Date.today) %>
-<% @in4 = Student.in_seat(4, Date.today) %>
-<% @absentStudents= Student.absent(Date.today) %>
-
-
 <div class="tl">
 <h2>Seat 1</h2>
 <table rules= "rows" align="center">
