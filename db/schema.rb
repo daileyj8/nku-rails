@@ -44,8 +44,6 @@ ActiveRecord::Schema.define(version: 20140214033531) do
     t.string   "email"
     t.string   "image"
     t.string   "password_digest"
-    t.boolean  "absent"
-    t.integer  "in_seat"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

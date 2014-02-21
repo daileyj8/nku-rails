@@ -11,7 +11,6 @@
 <% @absentStudents= Student.absent(Date.today) %>
 
 
-<!--I know this is terrible looking, i tried to do it another way but kept getting errors.-->
 <div class="tl">
 <h2>Seat 1</h2>
 <table rules= "rows" align="center">
@@ -20,20 +19,20 @@
     <th>Nickname</th>
   </tr>
   
-  <% @in1.each do |ab| %>
-    <% email_address= (ab.email).downcase %>
+  <% @in1.each do |stu| %>
+    <% email_address= (stu.email).downcase %>
     <tr>
       <td>
-        <% if ab.image != ""%>
+        <% if stu.image != ""%>
           <img src= <%= ab.image %> alt="image" height=100 width=100>
-        <% elsif ab.email != ""%>
+        <% elsif stu.email != ""%>
           <% hash = Digest::MD5.hexdigest(email_address) %>
           <img src=<%= "http://www.gravatar.com/avatar/#{hash}" %>>
         <% else %>
           <img src=<%="http://premium.wpmudev.org/blog/wp-content/uploads/2012/04/mystery-man-small.jpg" %> height=100 width=100>
         <% end %>
       </td>
-      <td><%= ab.nickname %> </td>
+      <td><%= stu.nickname %> </td>
     </tr>
   <%end%>
 </table>
@@ -47,20 +46,20 @@
     <th>Nickname</th>
   </tr>
   
-  <% @in2.each do |ab| %>
-    <% email_address= (ab.email).downcase %>
+  <% @in2.each do |stu| %>
+    <% email_address= (stu.email).downcase %>
     <tr>
       <td>
-        <% if ab.image != ""%>
-          <img src= <%= ab.image %> alt="image" height=100 width=100>
-        <% elsif ab.email != ""%>
+        <% if stu.image != ""%>
+          <img src= <%= stu.image %> alt="image" height=100 width=100>
+        <% elsif stu.email != ""%>
           <% hash = Digest::MD5.hexdigest(email_address) %>
           <img src=<%= "http://www.gravatar.com/avatar/#{hash}" %>>
         <% else %>
           <img src=<%="http://premium.wpmudev.org/blog/wp-content/uploads/2012/04/mystery-man-small.jpg" %> height=100 width=100>
         <% end %>
       </td>
-      <td><%= ab.nickname %> </td>
+      <td><%= stu.nickname %> </td>
     </tr>
   <%end%>
 </table>
@@ -74,20 +73,20 @@
     <th>Nickname</th>
   </tr>
   
-  <% @in3.each do |ab| %>
-    <% email_address= (ab.email).downcase %>
+  <% @in3.each do |stu| %>
+    <% email_address= (stu.email).downcase %>
     <tr>
       <td>
-        <% if ab.image != ""%>
-          <img src= <%= ab.image %> alt="image" height=100 width=100>
-        <% elsif ab.email != ""%>
+        <% if stu.image != ""%>
+          <img src= <%= stu.image %> alt="image" height=100 width=100>
+        <% elsif stu.email != ""%>
           <% hash = Digest::MD5.hexdigest(email_address) %>
           <img src=<%= "http://www.gravatar.com/avatar/#{hash}" %>>
         <% else %>
           <img src=<%="http://premium.wpmudev.org/blog/wp-content/uploads/2012/04/mystery-man-small.jpg" %> height=100 width=100>
         <% end %>
       </td>
-      <td><%= ab.nickname %> </td>
+      <td><%= stu.nickname %> </td>
     </tr>
   <%end%>
 </table>
@@ -101,20 +100,20 @@
     <th>Nickname</th>
   </tr>
   
-  <% @in4.each do |ab| %>
-    <% email_address= (ab.email).downcase %>
+  <% @in4.each do |stu| %>
+    <% email_address= (stu.email).downcase %>
     <tr>
       <td>
-        <% if ab.image != ""%>
+        <% if stu.image != ""%>
           <img src= <%= ab.image %> alt="image" height=100 width=100>
-        <% elsif ab.email != ""%>
+        <% elsif stu.email != ""%>
           <% hash = Digest::MD5.hexdigest(email_address) %>
           <img src=<%= "http://www.gravatar.com/avatar/#{hash}" %>>
         <% else %>
           <img src=<%="http://premium.wpmudev.org/blog/wp-content/uploads/2012/04/mystery-man-small.jpg" %> height=100 width=100>
         <% end %>
       </td>
-      <td><%= ab.nickname %> </td>
+      <td><%= stu.nickname %> </td>
     </tr>
   <%end%>
 </table>
