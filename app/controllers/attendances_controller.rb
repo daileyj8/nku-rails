@@ -13,22 +13,23 @@ class AttendancesController < ApplicationController
   
   def create
     @current = get_current
-    if @current == nil
-      redirect_to new_session_path
+    @attendance = Attendance.new
+    @attendance.seat = params[:attendance][:seat]
+    @attendance.attended_on = Date.today
+    @attendance.student_id= @current.id
+    @existing = Attendance.where(:attended_on => Date.today, :student_id => @current.id)
+    if (@existing.first == nil)
+      @attendance.save
+      redirect_to attendances_path, :notice => "logged in"
     else
-      @attendance = Attendance.new(get_params)
-      if @attendance.save
-        redirect_to attendances_path, notice: "Attendance taken."
-      else
-        redirect_to new_attendance_path
-      end
+      flash[:error]= "you have already loggen in"
+      redirect_to attendances_path
     end
   end
   def index
-    now= Date.today
-    @attendances= Attendance.all
-    @student= Student.all
-    @absent = Student.absent(now)
+    
+    
+   
   end
   
   def get_current

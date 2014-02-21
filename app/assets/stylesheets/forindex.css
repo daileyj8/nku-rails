@@ -7,3 +7,21 @@ td {font-weight:bold}
 th {text-decoration:underline}
 g {float:right}
 h2 {text-align: center;}
+
+
+.box{ position:relative;}
+.tl{ position:absolute;
+  top:10%;
+  left:0;}
+.tr{ position:absolute;
+  top:10%;
+  left:300px;}
+.bl{ position:absolute;
+  bottom:0%;
+  left:0;}
+.br{ position:absolute;
+  bottom:0%;
+  left:300px;}
+.ab{position:absolute;
+  top:10%;
+  left:600px;}
