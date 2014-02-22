@@ -5,7 +5,13 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate_student, :only => [:edit, :update]
   
-  
+  def get_current
+    if(session[:student_id] == nil)
+      return nil
+    else
+      return Student.find(session[:student_id])
+    end
+  end  
   
   def authenticate_student
     if session[:student_id]

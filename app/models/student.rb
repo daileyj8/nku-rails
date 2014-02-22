@@ -19,6 +19,12 @@ class Student < ActiveRecord::Base
     
   end
   
+  def self.absent2(date)
+    attendances = Attendance.where(date)
+    students = attendances.collect{ |a| a.student_id }
+    Student.where.not(id: students)
+  end
+  
   validates :password,
     :length => { :minimum => 5, :if => :validate_password? },
     :confirmation => { :if => :validate_password? }

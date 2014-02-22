@@ -31,6 +31,8 @@ class StudentsController < ApplicationController
   
   def index
     @students = Student.all
+    @current= get_current
+    @date=params[:date] || Date.today
   end
   
   def edit

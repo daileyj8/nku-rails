@@ -8,6 +8,9 @@ th {text-decoration:underline}
 g {float:right}
 h2 {text-align: center;}
 
+.date{ position:absolute;
+  top:0;
+  right:0;}
 
 .box{ position:relative;}
 .tl{ position:absolute;
@@ -23,5 +26,9 @@ h2 {text-align: center;}
   bottom:0%;
   left:300px;}
 .ab{position:absolute;
-  top:10%;
+  top:30%;
   left:600px;}
+td, th {
+  border: solid 1px black;
+  padding: 1px;
+}

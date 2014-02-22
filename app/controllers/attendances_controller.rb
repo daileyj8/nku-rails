@@ -19,20 +19,21 @@ class AttendancesController < ApplicationController
     @attendance.student_id= @current.id
     @existing = Attendance.where(:attended_on => Date.today, :student_id => @current.id)
     if (@existing.first == nil)
-      @attendance.save
-      redirect_to attendances_path, :notice => "logged in"
+       if @attendance.save
+         redirect_to attendances_path, :notice => "attendance taken"
+      else
+        render 'new'
+      end
+      
     else
       flash[:error]= "you have already loggen in"
       redirect_to attendances_path
     end
   end
   def index
-    date=Date.today
-    @in1 = Student.in_seat(1, date)
-    @in2 = Student.in_seat(2, date) 
-    @in3 = Student.in_seat(3, date) 
-    @in4 = Student.in_seat(4, date) 
-    @absentStudents= Student.absent(date) 
+    @attendances= Attendance.all
+    
+    
   end
   
   def get_current
