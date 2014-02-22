@@ -26,7 +26,7 @@ class AttendancesController < ApplicationController
       end
       
     else
-      flash[:error]= "you have already loggen in"
+      flash[:error]= "your attendance has already been taken"
       redirect_to attendances_path
     end
   end
