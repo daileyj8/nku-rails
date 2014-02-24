@@ -14,7 +14,15 @@ class Student < ActiveRecord::Base
     
   end
   
-  def self.absent(date)
+  def self.absent(now)
+    where.not(id: present(now))
+  end
+
+  def self.present(now)
+    joins(:attendances).where(attendances: {attended_on: now})
+  end
+  
+  def self.absentObsolete(date)
     Student.joins(:attendances).where.not(attendances: {attended_on: date})
     
   end

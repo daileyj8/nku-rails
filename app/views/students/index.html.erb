@@ -5,6 +5,7 @@
 
 <h1>Class</h1>
 
+
 <% if session[:student_id] != nil %>
   <p>
     <%= link_to "I'm here", new_attendance_path %>  
@@ -33,7 +34,7 @@
     <%@in2 = Student.in_seat(2, @date) %>
     <%@in3 = Student.in_seat(3, @date) %>
     <%@in4 = Student.in_seat(4, @date) %>
-    <%@absentStudents= Student.absent2(@date) %>
+    <%@absentStudents= Student.absent(@date) %>
 
 <table align="center" cellspacing="5">
   <tr>
