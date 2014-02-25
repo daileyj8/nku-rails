@@ -2,7 +2,7 @@ class AttendancesController < ApplicationController
   
   def new
     @current = get_current
-    if @current= nil
+    if @current == nil
       redirect_to new_session_path
     end
     

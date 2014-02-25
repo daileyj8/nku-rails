@@ -37,7 +37,7 @@ class StudentsController < ApplicationController
   
   def edit
     @student = Student.find(params[:id])
-     unless session[:student_id] == @student.id
+    unless session[:student_id] == @student.id
       flash[:notice] = "You dont have access to that profile!"
       redirect_to students_path
       return
