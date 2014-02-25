@@ -7,8 +7,12 @@ class AttendancesController < ApplicationController
     end
     
     @attendance = Attendance.new
-      
-    
+         
+  end
+  
+  def show
+    @student = params[:id]
+    @attendances= Attendance.all
   end
   
   def create

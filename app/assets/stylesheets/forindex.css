@@ -1,6 +1,6 @@
-
+li {display:inline; list-style-type:none; padding-right:20px}
 body {background-color:lightgray; background-size: cover;}
-h1 {text-align:center}
+h1 {text-align:center; color:orange;}
 p {text-align:center; font-weight:bold;}
 table {}
 td {font-weight:bold}
@@ -8,8 +8,41 @@ th {text-decoration:underline}
 g {float:right}
 h2 {text-align: center;}
 
+#apart{
+  display: inline-block;
+  }
+
+/* Reset Body Property */
+body{border:0; margin:0; padding:0;}
+#navbar-container{background:#000000;}
+#int-site-container{
+background:url(img/int-bg.png) left top repeat-x;
+height:166px;
+}
+#logo, #navbar, #int-site{
+width:800px;
+margin:0 auto;
+}
+/*------------------*/
+/* LOGO */
+#logo{height:54px;}
+
+/*------------------*/
+/* Nav Bar */
+#navbar{
+height:26px;
+line-height:26px;
+}
+#navbar a:link, #navbar a:visited, #navbar a:hover{
+color:#FFFFFF;
+font-weight:bold;
+margin-right:20px;
+text-decoration:none;
+}
+
+.date2{float:right;}
 .date{ position:absolute;
-  top:0;
+  top:0px;
   right:0;}
 
 .header{ position:absolute;

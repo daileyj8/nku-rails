@@ -2,33 +2,38 @@
       <%= content_tag :div, msg, class: name %>
 <% end %>
 
+<div id="navbar-container">
+ 
+  <h1>Class</h1>    
+    
+</div>
 
-<h1>Class</h1>
-
-
-<% if session[:student_id] != nil %>
-  <p>
-    <%= link_to "I'm here", new_attendance_path %>  
-  </p>
-  <p>
-    <%= link_to 'Log out', session_path(:student_id), method: :delete, data: { confirm: 'Are you sure?' } %>
-  </p>
-  <p>
-    <%= link_to 'Edit Profile', edit_student_path(@current) %>
-  </p>
-<% else %>
-<p>
-  <%= link_to "Log In", new_session_path %>
-</p>
-<% end %>
+<ul align="center">
+  <% if session[:student_id] != nil %>
+    <li>
+      <%= link_to "I'm here", new_attendance_path %>  
+    </li>
+    <li>
+      <%= link_to 'Log out', session_path(:student_id), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+    <li>
+      <%= link_to 'Edit Profile', edit_student_path(@current) %>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to "Log In", new_session_path %>
+    </li>
+  <% end %>
+  <li>
+    <%=form_tag students_path, method:"get" do%>
+      <%=date_field_tag("date", @date) %>
+      <%=submit_tag "Confirm"%>
+    <%end%>
+  </li>
+</ul>
 
 <% require 'digest/md5' %>
-<div class="date">
-  <%=form_tag students_path, method:"get" do%>
-    <%=date_field_tag("date", @date) %>
-    <%=submit_tag "Confirm"%>
-  <%end%>
-</div>
+
 
     <%@in1 = Student.in_seat(1, @date)%>
     <%@in2 = Student.in_seat(2, @date) %>
@@ -140,6 +145,8 @@
     </tr>
   <%end%>
 </table>
+
+
 <p>
   <%= link_to "All Attendances", attendances_path %>
 </p>

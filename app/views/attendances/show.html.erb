@@ -1,13 +1,10 @@
-<% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: name %>
-<% end %>
-
+<%@current= Student.find(@student) %>
 <div id="navbar-container">
-  <h1>Attendances</h1>
+  <h1><%= @current.name %></h1>
 </div>
 
 <%= link_to "Class", students_path %>
-
+<%= link_to "All Attendances", attendances_path %>
 
 <table class="studentTable">
   <tr>
@@ -16,12 +13,11 @@
     <th>Attended On</th>
     <th>Seat</th>
   </tr>
-  
-  <% @attendances.each do |attendance| %>
-    <% @current = Student.find(attendance.student_id) %>
-    
-    <% email_address= (@current.email).downcase %>
-    <% if @current && attendance.student_id == @current.id %>
+  <% @attendances.each do |attend| %>
+    <% if attend.student_id == @student.to_i %>
+      
+      
+      <% email_address= (@current.email).downcase %>
       <tr>
         <td>
         <% if @current.image != ""%>
@@ -32,12 +28,12 @@
         <% else %>
           <img src=<%="http://premium.wpmudev.org/blog/wp-content/uploads/2012/04/mystery-man-small.jpg" %> height=100 width=100>
         <% end %>
-      </td>
-        <td><%= link_to @current.name, attendance_path(:id => @current.id) %></td>
-        <td><%= attendance.attended_on %></td>
-        <td><%= attendance.seat %></td>
+        </td>
+        <td><%= @current.name %></td>
+        <td><%= attend.attended_on %></td>
+        <td><%= attend.seat %></td>
       </tr>
-    <% end %>
-    
-  <% end %>
+    <%end%>
+  <%end%>
+  
 </table>
