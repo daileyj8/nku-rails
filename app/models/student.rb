@@ -14,6 +14,10 @@ class Student < ActiveRecord::Base
     
   end
   
+  def present
+    return (@in1.count+@in2.count+@in3.count+@in4.count)
+  end
+  
   def self.absent(now)
     where.not(id: present(now))
   end

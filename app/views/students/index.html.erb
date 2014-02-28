@@ -147,6 +147,31 @@
 </table>
 
 
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      var ab = <%= @absentStudents.count %>;
+      var pres= <%= @in1.count%> + <%= @in2.count %> + <%= @in3.count %> + <%= @in4.count %>;
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['StudentsHere', 'Totals'],
+          ['Absent',     ab],
+          ['Present',      pres],
+          
+        ]);
+
+        var options = {
+          title: 'Attendance'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+    </script>
+    <div id="piechart" style="width: 400px;"></div>
+
+
 <p>
   <%= link_to "All Attendances", attendances_path %>
 </p>
+
