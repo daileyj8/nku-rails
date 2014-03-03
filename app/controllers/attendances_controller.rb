@@ -1,9 +1,10 @@
 class AttendancesController < ApplicationController
   
   def new
-    @current = get_current
-    if @current == nil
+    unless session[:student_id] != nil
+      flash[:notice] = "You must log in!"
       redirect_to new_session_path
+      return
     end
     
     @attendance = Attendance.new
@@ -13,6 +14,11 @@ class AttendancesController < ApplicationController
   def show
     @student = params[:id]
     @attendances= Attendance.all
+    unless session[:student_id] != nil
+      flash[:notice] = "You must log in!"
+      redirect_to new_session_path
+      return
+    end
   end
   
   def create

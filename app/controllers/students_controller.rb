@@ -24,14 +24,23 @@ class StudentsController < ApplicationController
   end
   
   def show
-    
     @students= Student.all
+    unless session[:student_id] != nil
+      flash[:notice] = "You must log in!"
+      redirect_to new_session_path
+      return
+    end
   end
   
   def index
     @students = Student.all
     @current= get_current
     @date=params[:date] || Date.today
+    unless session[:student_id] != nil
+      flash[:notice] = "You must log in!"
+      redirect_to new_session_path
+      return
+    end
   end
   
   def edit
