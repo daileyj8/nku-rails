@@ -16,7 +16,8 @@ h2 {text-align: center;}
 
 /* Reset Body Property */
 body{border:0; margin:0; padding:0;}
-#navbar-container{background:#000000;}
+#navbar-container{background:#000000; }
+
 #int-site-container{
 background:url(img/int-bg.png) left top repeat-x;
 height:166px;
@@ -47,26 +48,7 @@ text-decoration:none;
   top:0px;
   right:0;}
 
-.header{ position:absolute;
-  top:20%
-    background-color: blue;}
 
-.box{ position:relative;}
-.tl{ position:absolute;
-  top:10%;
-  left:0;}
-.tr{ position:absolute;
-  top:10%;
-  left:300px;}
-.bl{ position:absolute;
-  bottom:0%;
-  left:0;}
-.br{ position:absolute;
-  bottom:0%;
-  left:300px;}
-.ab{position:absolute;
-  top:30%;
-  left:600px;}
 td, th {
   border: solid 1px black;
   padding: 1px;

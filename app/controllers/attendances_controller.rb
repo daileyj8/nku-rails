@@ -19,6 +19,7 @@ class AttendancesController < ApplicationController
       redirect_to new_session_path
       return
     end
+    @current= get_current
   end
   
   def create
@@ -42,16 +43,8 @@ class AttendancesController < ApplicationController
   end
   def index
     @attendances= Attendance.all
+    @current= get_current
     
-    
-  end
-  
-  def get_current
-    if(session[:student_id] == nil)
-      return nil
-    else
-      return Student.find(session[:student_id])
-    end
   end
   
   private

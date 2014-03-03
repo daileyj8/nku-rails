@@ -1,7 +1,22 @@
-<div id="navbar-container">
- 
-  <h1>All Students</h1>    
-    
+<div id="navbar-container"> 
+  <h1>All Students</h1>        
+</div>
+
+<div id="navbar-container"> 
+  <center><ul id="navbar">
+    <li>
+      <%= link_to "Seating Chart", students_path %>
+    </li>
+    <li>
+      <%= link_to "All Attendances", attendances_path %>
+    </li>
+    <li>
+      <a href="/students/show">Student Index</a>
+    </li>
+    <li>
+      <%= link_to 'Edit Profile', edit_student_path(@current) %>
+    </li>
+  </ul></center>    
 </div>
 
 <table class="studentTable">
@@ -42,4 +57,4 @@
 <%end%>
 </table>
 
-  <%= link_to 'Back', students_path %>
+

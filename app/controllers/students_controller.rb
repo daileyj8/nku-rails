@@ -30,6 +30,7 @@ class StudentsController < ApplicationController
       redirect_to new_session_path
       return
     end
+    @current= get_current
   end
   
   def index
@@ -50,6 +51,7 @@ class StudentsController < ApplicationController
       redirect_to students_path
       return
     end
+    @current= get_current
   end
   
   def update
