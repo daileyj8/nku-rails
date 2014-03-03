@@ -1,28 +1,40 @@
-<p>
-  <strong>Name:</strong>
-  <%= @student.name %>
-</p>
-<p>
-  <strong>Nickname:</strong>
-  <%= @student.nickname %>
-</p>
-<p>
-  <strong>Email:</strong>
-  <%= @student.email %>
-</p>
-<p>
-  <strong>Image:</strong>
-  <% email_address= (@student.email).downcase %>
-  <% if @student.image != ""%>
-          <img src= <%= @student.image %> alt="image" height=100 width=100>
-        <% elsif @student.email != ""%>
-          <% hash = Digest::MD5.hexdigest(email_address) %>
-          <img src=<%= "http://www.gravatar.com/avatar/#{hash}" %>>
-        <% else %>
-          <img src=<%="http://premium.wpmudev.org/blog/wp-content/uploads/2012/04/mystery-man-small.jpg" %> height=100 width=100>
-        <% end %>
-</p>
+<table class="studentTable">
+  <tr>
+    <th>Pic</th>
+    <th>Student Name</th>
+    <th>Nickname</th>
+    <th>Email</th>
+  </tr>
 
+<% @students.each do |student| %>
+  <tr>
+<td>
+  
+  <%= student.name %>
+</td>
+<td>
+ 
+  <%= student.nickname %>
+</td>
+<td>
+  
+  <%= student.email %>
+</td>
+<td>
+ 
+  <% email_address= (student.email).downcase %>
+  <% if student.image != ""%>
+    <img src= <%= student.image %> alt="image" height=100 width=100>
+  <% elsif student.email != ""%>
+    <% hash = Digest::MD5.hexdigest(email_address) %>
+    <img src=<%= "http://www.gravatar.com/avatar/#{hash}" %>>
+  <% else %>
+    <img src=<%="http://premium.wpmudev.org/blog/wp-content/uploads/2012/04/mystery-man-small.jpg" %> height=100 width=100>
+  <% end %>
+</td>
+  </tr>
+<%end%>
+</table>
 <p>
   <%= link_to 'List of Students', students_path %>
 </p>
