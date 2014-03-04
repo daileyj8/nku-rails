@@ -3,7 +3,7 @@
 </div>
 
 <div id="navbar-container"> 
-  <center><ul id="navbar">
+  <ul id="navbar">
     <li>
       <%= link_to "Seating Chart", students_path %>
     </li>
@@ -16,7 +16,7 @@
     <li>
       <%= link_to 'Edit Profile', edit_student_path(@current) %>
     </li>
-  </ul></center>    
+  </ul>    
 </div>
 
 <%= form_for @student do |f| %>

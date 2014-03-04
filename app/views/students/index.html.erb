@@ -7,7 +7,7 @@
 </div>
 
 <div id="navbar-container"> 
-  <center><ul id="navbar">
+  <ul id="navbar">
     <li>
       <%= link_to "Seating Chart", students_path %>
     </li>
@@ -20,7 +20,10 @@
     <li>
       <%= link_to 'Edit Profile', edit_student_path(@current) %>
     </li>
-  </ul></center>    
+    <li>
+      <%= link_to 'Log out', session_path(:student_id), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+  </ul>   
 </div>
 
 <div align="center">
