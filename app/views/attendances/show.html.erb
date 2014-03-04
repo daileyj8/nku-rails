@@ -17,6 +17,9 @@
     <li>
       <%= link_to 'Edit Profile', edit_student_path(@current) %>
     </li>
+    <li>
+      <%= link_to 'Log out', session_path(:student_id), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
   </ul>    
 </div>
 

@@ -25,7 +25,9 @@
     </li>
   </ul>   
 </div>
-
+<p>
+  <%= link_to "I'm here", new_attendance_path(@current) %>
+</p>
 <div align="center">
   <%=form_tag students_path, method:"get" do%>
     <%=date_field_tag("date", @date) %>
@@ -39,13 +41,14 @@
     <%@in2 = Student.in_seat(2, @date) %>
     <%@in3 = Student.in_seat(3, @date) %>
     <%@in4 = Student.in_seat(4, @date) %>
-    <%@absentStudents= Student.absent(@date) %>
+    <%@absent_students= Student.absent(@date) %>
 
 <table align="center" cellspacing="5">
   <tr>
     <td bgcolor="white">
-    <% @in1.each do |stu| %>
-      <% email_address= (stu.email).downcase %>
+      <h2>Section 1</h2>
+      <% @in1.each do |stu| %>
+        <% email_address= (stu.email).downcase %>
     
         <% if stu.image != ""%>
           <img src= <%= ab.image %> alt="image" height=100 width=100>
@@ -58,13 +61,13 @@
       
       <%= stu.nickname %> 
    
-  <%end%>
-  </td>
+      <%end%>
+    </td>
 
-  <td bgcolor="white">
-  
-  <% @in2.each do |stu| %>
-    <% email_address= (stu.email).downcase %>
+    <td bgcolor="white">
+    <h2>Section 2</h2>
+      <% @in2.each do |stu| %>
+        <% email_address= (stu.email).downcase %>
    
         <% if stu.image != ""%>
           <img src= <%= stu.image %> alt="image" height=100 width=100>
@@ -74,14 +77,14 @@
         <% else %>
           <img src=<%="http://premium.wpmudev.org/blog/wp-content/uploads/2012/04/mystery-man-small.jpg" %> height=100 width=100>
         <% end %>
-      <%= stu.nickname %> 
+        <%= stu.nickname %> 
     
-  <%end%>
-  </td>
+      <%end%>
+    </td>
   </tr>
   <tr>
     <td bgcolor="white">
-  
+      <h2>Section 3</h2>
       <% @in3.each do |stu| %>
         <% email_address= (stu.email).downcase %>
    
@@ -98,7 +101,7 @@
       <%end%>
     </td>
     <td bgcolor="white">
-  
+      <h2>Section 4</h2>
       <% @in4.each do |stu| %>
         <% email_address= (stu.email).downcase %>
     
@@ -126,7 +129,7 @@
     <th>Nickname</th>
   </tr>
   
-  <% @absentStudents.each do |ab| %>
+  <% @absent_students.each do |ab| %>
   
     <% email_address= (ab.email).downcase %>
     <tr>
@@ -149,7 +152,7 @@
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
-      var ab = <%= @absentStudents.count %>;
+      var ab = <%= @absent_students.count %>;
       var pres= <%= @in1.count%> + <%= @in2.count %> + <%= @in3.count %> + <%= @in4.count %>;
       function drawChart() {
         var data = google.visualization.arrayToDataTable([

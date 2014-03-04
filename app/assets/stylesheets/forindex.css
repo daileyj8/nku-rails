@@ -1,4 +1,4 @@
-li {display:inline; list-style-type:none; padding-right:20px}
+li {display:inline; list-style-type:none; padding-right:10px}
 body {background-color:lightgray; background-size: cover;}
 h1 {text-align:center; color:orange;}
 p {text-align:center; font-weight:bold;}
@@ -23,7 +23,7 @@ background:url(img/int-bg.png) left top repeat-x;
 height:166px;
 }
 #logo, #navbar, #int-site{
-width:800px;
+width:550px;
 margin:0 auto;
 }
 /*------------------*/
@@ -39,7 +39,7 @@ line-height:26px;
 #navbar a:link, #navbar a:visited, #navbar a:hover{
 color:#FFFFFF;
 font-weight:bold;
-margin-right:20px;
+margin-right:10px;
 text-decoration:none;
 }
 
