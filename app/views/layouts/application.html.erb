@@ -8,8 +8,32 @@
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 </head>
 <body>
+  <div id="navbar-container">
+    <h1>Bueller</h1>
+  </div>
 
-<%= yield %>
+  <% if @current %>
+    <div id="navbar-container"> 
+      <ul id="navbar">
+        <li>
+          <%= link_to "Seating Chart", students_path %>
+        </li>
+        <li>
+          <%= link_to "All Attendances", attendances_path %>
+        </li>
+        <li>
+          <a href="/students/show">Student Index</a>
+        </li>
+        <li>
+          <%= link_to 'Edit Profile', edit_student_path(@current) %>
+        </li>
+        <li>
+          <%= link_to 'Log out', session_path(:student_id), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </li>
+      </ul>  
+    </div>
+  <%end%>
+  <%= yield %>
 
 </body>
 </html>

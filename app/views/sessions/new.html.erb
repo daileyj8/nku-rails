@@ -1,9 +1,6 @@
 <% flash.each do |name, msg| -%>
       <%= content_tag :div, msg, class: name %>
 <% end %>
-<div id="navbar-container">
-  <h1>Log In</h1>
-</div>
  
 <%= form_tag sessions_path do %>
   <%= label_tag :email %>

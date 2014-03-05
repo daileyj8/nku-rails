@@ -2,38 +2,6 @@
       <%= content_tag :div, msg, class: name %>
 <% end %>
 
-<div id="navbar-container"> 
-  <h1>Class</h1>        
-</div>
-
-<div id="navbar-container"> 
-  <ul id="navbar">
-    <li>
-      <%= link_to "Seating Chart", students_path %>
-    </li>
-    <li>
-      <%= link_to "All Attendances", attendances_path %>
-    </li>
-    <li>
-      <a href="/students/show">Student Index</a>
-    </li>
-    <li>
-      <%= link_to 'Edit Profile', edit_student_path(@current) %>
-    </li>
-    <li>
-      <%= link_to 'Log out', session_path(:student_id), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </li>
-  </ul>   
-</div>
-<p>
-  <%= link_to "I'm here", new_attendance_path(@current) %>
-</p>
-<div align="center">
-  <%=form_tag students_path, method:"get" do%>
-    <%=date_field_tag("date", @date) %>
-    <%=submit_tag "Confirm"%>
-  <%end%>
-</div>
 
 <% require 'digest/md5' %>
 
