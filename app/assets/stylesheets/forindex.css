@@ -53,3 +53,11 @@ td, th {
   border: solid 1px black;
   padding: 1px;
 }
+
+.button {
+  padding: 5px 5px 5px 25px;
+  border: 1px solid #666;
+  color:#000;
+  text-decoration:none;
+  background: #dcdcdc url(icon.png) no-repeat scroll 5px center;
+}

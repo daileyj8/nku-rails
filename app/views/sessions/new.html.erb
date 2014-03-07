@@ -2,6 +2,7 @@
       <%= content_tag :div, msg, class: name %>
 <% end %>
  
+
 <%= form_tag sessions_path do %>
   <%= label_tag :email %>
   <%= text_field_tag :email, params[:email] %>
@@ -9,4 +10,9 @@
   <%= password_field_tag :password %>
   <%= submit_tag "Log In" %>
 <% end %>
+
+
+<!--<a class="button" href="/students/new">New Student</a>-->
+
+
 <%= link_to 'New Student', new_student_path %>
