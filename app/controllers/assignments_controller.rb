@@ -2,9 +2,31 @@ class AssignmentsController < ApplicationController
   
   def new
     @assignment= Assignment.new
+    unless session[:student_id] != nil
+      flash[:notice] = "You must log in!"
+      redirect_to new_session_path
+      return
+    end
+    @current= get_current
+    unless @current.admin
+      flash[:notice] = "You do not have permission to do that"
+      redirect_to students_path
+      return
+    end
   end
   
   def create
+    unless session[:student_id] != nil
+      flash[:notice] = "You must log in!"
+      redirect_to new_session_path
+      return
+    end
+    @current= get_current
+    unless @current.admin
+      flash[:notice] = "You do not have permission to do that"
+      redirect_to students_path
+      return
+    end
     @students=Student.all
     @assignment= Assignment.new
     @assignment.name = params[:assignment][:name]

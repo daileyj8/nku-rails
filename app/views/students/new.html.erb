@@ -15,7 +15,12 @@
     </ul>
     </div>
   <% end %>
-
+  
+  <p>
+    <%= f.label "Will this be an admin account?" %><br />
+    <%= f.radio_button :admin, true %><%= f.label "yes" %><br />
+    <%= f.radio_button :admin, false %><%= f.label "no" %><br />
+  </p>
   <p>
     <%= f.label :name %><br>
     <%= f.text_field :name %>
