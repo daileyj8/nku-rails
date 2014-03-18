@@ -1,5 +1,15 @@
 class Assignment < ActiveRecord::Base
-  
+  validates_presence_of :score, :on => :create
+  validates_presence_of :total, :on => :create
+  validates_presence_of :name, :on => :create
+  validates_presence_of :student_id, :on => :create
+  validates :score, numericality: {
+    only_integer: true,
+  }
+  validates :total, numericality: {
+    only_integer: true,
+  }
+
   def self.average_percentage
     assignments=Assignment.all
     total=0

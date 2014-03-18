@@ -1,5 +1,15 @@
 <%= form_for @assignment do |f| %>
-  
+  <% if @assignment.errors.any? %>
+    <div id="error_explanation">
+    <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited
+      this student from being saved:</h2>
+    <ul>
+    <% @assignment.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+    </div>
+  <% end %>
   <p>
     <%= f.label :student_id, "Select Student" %>
     <%= f.collection_select :student_id, Student.all, :id, :name, :prompt => true %>
