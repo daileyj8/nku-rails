@@ -5,6 +5,7 @@ class Assignments < ActiveRecord::Migration
       t.integer :score
       t.integer :total
       
+      
 
       t.timestamps
     end

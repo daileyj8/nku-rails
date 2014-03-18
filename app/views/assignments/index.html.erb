@@ -1,0 +1,20 @@
+<h2></h2>
+<table class="studentTable">
+  <tr>
+    <th>Assignment</th>
+    <th>Score</th>
+    <th>Total</th>
+    <th>Percentage</th>
+  </tr>
+  <% @assignments.each do |assign| %>
+    
+    <% if assign.student_id == @current.id %>
+      <tr>
+        <td><%= assign.name %></td>
+        <td><%= assign.score %></td>
+        <td><%= assign.total %></td>
+        <td><%= assign.percentage %></td>
+      </tr>
+    <%end%>
+  <%end%>
+</table>
