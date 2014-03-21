@@ -8,6 +8,7 @@ class Student < ActiveRecord::Base
   validates :name, presence: true, length: { minimum: 2 }
   validates_inclusion_of :admin, :in => [true, false]
   has_many :attendances, dependent: :destroy
+  has_many :assignments, dependent: :destroy
   
   def self.in_seat(seat, date)
     Student.joins(:attendances).where(attendances: {seat: seat, attended_on: date})

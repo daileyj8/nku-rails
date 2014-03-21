@@ -10,6 +10,9 @@ class Assignment < ActiveRecord::Base
     only_integer: true,
   }
 
+  def student_percentage(all, all_count)
+    (all.to_f / all_count)
+  end
   def self.average_percentage
     assignments=Assignment.all
     total=0

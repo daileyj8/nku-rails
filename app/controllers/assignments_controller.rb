@@ -34,7 +34,7 @@ class AssignmentsController < ApplicationController
     @assignment.total = params[:assignment][:total]
     @assignment.student_id = params[:assignment][:student_id]
     if @assignment.save
-      redirect_to students_path
+      redirect_to assignments_path
     else
       render 'new'
     end
@@ -43,11 +43,22 @@ class AssignmentsController < ApplicationController
   def index
     @current= get_current
     @assignments= Assignment.all
+    @students= Student.all
     unless session[:student_id] != nil
       flash[:notice] = "You must log in!"
       redirect_to new_session_path
       return
     end
+    if @current.admin
+      if params[:student_id]
+        @stu= Student.find(params[:student_id])
+        @assignments= @stu.assignments
+      end
+    end
+  end
+  
+  def student_percentage
+    (all.to_f / all_count)
   end
   
   def show

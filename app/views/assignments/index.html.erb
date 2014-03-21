@@ -1,20 +1,58 @@
-<h2></h2>
-<table class="studentTable">
-  <tr>
-    <th>Assignment</th>
-    <th>Score</th>
-    <th>Total</th>
-    <th>Percentage</th>
-  </tr>
-  <% @assignments.each do |assign| %>
-    
-    <% if assign.student_id == @current.id %>
+<% if @current.admin %>
+  <div><%= link_to "New Assignment", new_assignment_path %> </div>
+  <%=form_tag assignments_path, method:"get" do%>
+    <%=select_tag "student_id", options_from_collection_for_select(@students, "id", "name") %>
+    <%=submit_tag "Filter"%>
+  <%end%>
+  <table class="studentTable">
+    <tr>
+      <th>Student</th>
+      <th>Assignment</th>
+      <th>Score</th>
+      <th>Total</th>
+      <th>Percentage</th>
+    </tr>
+    <% @assignments.each do |assign| %>
+      <% @curr= Student.find(assign.student_id).name%>
       <tr>
+        <td><%= @curr %></td>
         <td><%= assign.name %></td>
         <td><%= assign.score %></td>
         <td><%= assign.total %></td>
         <td><%= assign.percentage %></td>
       </tr>
     <%end%>
-  <%end%>
-</table>
+  </table>
+    
+    
+<%else%>
+  
+  <table class="studentTable">
+    <tr>
+      <th>Assignment</th>
+      <th>Score</th>
+      <th>Total</th>
+      <th>Percentage</th>
+    </tr>
+    
+    <%all=0.to_f%>
+    <%all_count=0%>
+    
+    <% @assignments.each do |assign| %>
+    
+      <% if assign.student_id == @current.id %>
+        <tr>
+          <td><%= assign.name %></td>
+          <td><%= assign.score %></td>
+          <td><%= assign.total %></td>
+          <td><%= assign.percentage %></td>
+          <%all= all+assign.percentage.to_f%>
+          <%all_count= all_count+1%>
+        </tr>
+      <%end%>
+     
+    <%end%>
+    <div><b>Current Grade= <%=all/all_count%></b></div><br>
+   
+  </table>
+<%end%>
