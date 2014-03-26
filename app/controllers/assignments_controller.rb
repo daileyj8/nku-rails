@@ -69,8 +69,10 @@ class AssignmentsController < ApplicationController
   end
   
   def import
+    before= Assignment.all.size
     AssignmentUploader.new(params[:file])
-    redirect_to "/assignments/index", notice: "Assignments Imported."
+    after= Assignment.all.size
+    redirect_to "/assignments", notice: "#{after - before} Assignments Imported."
     #redirect_to students_path, notice: "Students imported."
   end
   
