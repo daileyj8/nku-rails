@@ -1,4 +1,5 @@
 class Assignment < ActiveRecord::Base
+  validates :student_id, :uniqueness => { :scope => :name }
   validates_presence_of :score, :on => :create
   validates_presence_of :total, :on => :create
   validates_presence_of :name, :on => :create

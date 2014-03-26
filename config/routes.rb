@@ -4,11 +4,17 @@ NkuRails::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
   
   resources :assignments
+  resources :assignments do
+    collection { post :import }
+  end
   resources :attendances
   resources :sessions
   resources :students
   # You can have the root of your site routed with "root"
   root to: "students#index"
+  resources :students do
+    collection { post :import }
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -25,6 +25,7 @@ class StudentsController < ApplicationController
   
   def show
     @students= Student.all
+    @current= get_current
     unless session[:student_id] != nil
       flash[:notice] = "You must log in!"
       redirect_to new_session_path
@@ -63,6 +64,14 @@ class StudentsController < ApplicationController
     end
   end
   
+  def import
+    StudentUploader.new(params[:file])
+    redirect_to "/students/show", notice: "Students Imported."
+    #redirect_to students_path, notice: "Students imported."
+  end
+  
+  
+  
   def destroy
     @student = Student.find(params[:id])
     session.destroy
@@ -73,6 +82,7 @@ class StudentsController < ApplicationController
   private
   def student_params
     params.require(:student).permit(:admin, :name, :nickname, :email, :image, :password, :password_confirmation)
+    
   end
   
   

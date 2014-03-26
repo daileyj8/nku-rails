@@ -1,1 +1,13 @@
-<h1>hi</h1>
+<% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: name %>
+<% end %>
+
+<%if @current.admin%>
+  <div><b>Import Assignments
+    <%= form_tag import_assignments_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import" %>
+  <% end %>
+  <br>
+</b><div>
+<%end%>

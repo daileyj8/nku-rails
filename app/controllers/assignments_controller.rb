@@ -44,6 +44,7 @@ class AssignmentsController < ApplicationController
     @current= get_current
     @assignments= Assignment.all
     @students= Student.all
+    
     unless session[:student_id] != nil
       flash[:notice] = "You must log in!"
       redirect_to new_session_path
@@ -61,7 +62,24 @@ class AssignmentsController < ApplicationController
     (all.to_f / all_count)
   end
   
+  def destroy
+    @assignment= Assignment.find(params[:id])
+    @assignment.destroy
+    redirect_to assignments_path, notice: "Assignment successfully deleted."
+  end
+  
+  def import
+    AssignmentUploader.new(params[:file])
+    redirect_to "/assignments/index", notice: "Assignments Imported."
+    #redirect_to students_path, notice: "Students imported."
+  end
+  
+  def edit
+    
+  end
+  
   def show
+    @current= get_current
   end
     
 end

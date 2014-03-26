@@ -1,3 +1,17 @@
+<% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: name %>
+<% end %>
+
+<%if @current.admin%>
+  <div><b>Import Students
+    <%= form_tag import_students_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import" %>
+  <% end %>
+  <br>
+</b><div>
+<%end%>
+  
 
 
 <table class="studentTable">
@@ -8,34 +22,35 @@
     <th>Email</th>
   </tr>
 
-<% @students.each do |student| %>
-  <tr>
-<td>
-  
-  <%= student.name %>
-</td>
-<td>
+  <% @students.each do |student| %>
+    <tr>
+      <td>
  
-  <%= student.nickname %>
-</td>
-<td>
+        <% email_address= (student.email).downcase %>
+        <% if student.image != ""%>
+          <img src= <%= student.image %> alt="image" height=100 width=100>
+        <% elsif student.email != ""%>
+          <% hash = Digest::MD5.hexdigest(email_address) %>
+          <img src=<%= "http://www.gravatar.com/avatar/#{hash}" %>>
+        <% else %>
+          <img src=<%="http://premium.wpmudev.org/blog/wp-content/uploads/2012/04/mystery-man-small.jpg" %> height=100 width=100>
+        <% end %>
+      </td>
+      <td>
   
-  <%= student.email %>
-</td>
-<td>
+        <%= student.name %>
+      </td>
+      <td>
  
-  <% email_address= (student.email).downcase %>
-  <% if student.image != ""%>
-    <img src= <%= student.image %> alt="image" height=100 width=100>
-  <% elsif student.email != ""%>
-    <% hash = Digest::MD5.hexdigest(email_address) %>
-    <img src=<%= "http://www.gravatar.com/avatar/#{hash}" %>>
-  <% else %>
-    <img src=<%="http://premium.wpmudev.org/blog/wp-content/uploads/2012/04/mystery-man-small.jpg" %> height=100 width=100>
-  <% end %>
-</td>
-  </tr>
-<%end%>
+        <%= student.nickname %>
+      </td>
+      <td>
+  
+        <%= student.email %>
+      </td>
+
+    </tr>
+  <%end%>
 </table>
 
 

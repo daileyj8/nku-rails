@@ -29,18 +29,15 @@ class AttendancesController < ApplicationController
     @attendance.attended_on = Date.today
     @attendance.student_id= @current.id
     @existing = Attendance.where(:attended_on => Date.today, :student_id => @current.id)
-    if (@existing.first == nil)
-       if @attendance.save
-         redirect_to attendances_path, :notice => "attendance taken"
-      else
-        render 'new'
-      end
-      
+   
+    if @attendance.save
+      redirect_to attendances_path, :notice => "attendance taken"
     else
-      flash[:error]= "your attendance has already been taken"
-      redirect_to attendances_path
-    end
+      render 'new'
+    end 
+   
   end
+  
   def index
     @attendances= Attendance.all
     @current= get_current

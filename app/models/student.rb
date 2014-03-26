@@ -1,8 +1,11 @@
 require 'digest/md5'
+require 'csv'
+
 class Student < ActiveRecord::Base
 
   #attr_accessible :email, :password, :password_confirmation
   has_secure_password
+  validates :email, uniqueness: {scope: :email, message: "email has already been used"}
   validates_presence_of :password, :on => :create
   validates_presence_of :email, :on => :create
   validates :name, presence: true, length: { minimum: 2 }
@@ -58,4 +61,5 @@ class Student < ActiveRecord::Base
 #    else
 #      return "http://premium.wpmudev.org/blog/wp-content/uploads/2012/04/mystery-man-small.jpg"
 #  end  
+  
 end
