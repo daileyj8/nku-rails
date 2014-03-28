@@ -82,6 +82,9 @@ class AssignmentsController < ApplicationController
   
   def show
     @current= get_current
+    unless @current.admin
+      redirect_to "/assignments"
+    end
   end
     
 end
